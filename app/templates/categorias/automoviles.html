@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+    <div class="col-md-9">
+        <div class="row">
+          <div class="">
+            {% for car in carros %}
+                <div class="col-md-3">
+                    <div class="card">
+                  <a href="{% url 'detalle_carro' object_id=car.id %}">
+                    <img class="card-img-top" data-src="..." class="img-fluid"  alt="Card image cap" src="https://s-media-cache-ak0.pinimg.com/236x/26/6f/e8/266fe88855189188470d09061a16cd4b.jpg">
+                  </a>
+                      <div class="card-block">
+                  <h4 class="card-title">{{ car.nombre }}</h4>
+                  <p class="card-text">
+                          <ul>
+                              <li>Año: {{ car.anio.year }}</li>
+                              <li>    Dia: {{ car.precio_por_dia }}</li>
+                              <li>  Semana:{{ car.precio_por_semana }}</li>
+                              <li> Mes: {{ car.precio_por_mes }}</li>
+                              <li><button type="button" class="btn btn-danger-outline">Ver</button></li>
+
+                          </ul>
+                    </p>
+                </div>
+              </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+      </div>
+{% endblock %}

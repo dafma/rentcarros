@@ -1,0 +1,254 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block estilo %}
+          <style>
+          .credit-card-box .panel-title {
+            display: inline;
+            font-weight: bold;
+        }
+        .credit-card-box .form-control.error {
+            border-color: red;
+            outline: 0;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+        }
+        .credit-card-box label.error {
+          font-weight: bold;
+          color: red;
+          padding: 2px 8px;
+          margin-top: 2px;
+        }
+        .credit-card-box .payment-errors {
+          font-weight: bold;
+          color: red;
+          padding: 2px 8px;
+          margin-top: 2px;
+        }
+        .credit-card-box label {
+            display: block;
+        }
+        /* The old "center div vertically" hack */
+        .credit-card-box .display-table {
+            display: table;
+        }
+        .credit-card-box .display-tr {
+            display: table-row;
+        }
+        .credit-card-box .display-td {
+            display: table-cell;
+            vertical-align: middle;
+            width: 50%;
+        }
+        /* Just looks nicer */
+        .credit-card-box .panel-heading img {
+            min-width: 180px;
+        }
+      </style>
+        <style>
+        .True span  {
+            display: none;
+            }
+        .True:after {
+            content: "Ocupado";
+            }
+        .False span  {
+            display: none;
+            }
+        .False:after {
+
+            content: "Disponible";
+        }
+        </style>
+{% endblock %}
+{% block contenido %}
+    <!-- inicio modal -->
+        <div class="bd-example">
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="exampleModalLabel">Fecha de renta</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ formres }}
+                        <hr>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar.</button>
+                        <input type="submit" class="btn btn-primary">
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <!-- Final modal -->
+        <div class="col-md-9">
+              <!-- carrusel -->
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                  <img class="img-fluid responsive"  data-src="..." alt="First slide" src="{{ carro.imagen_principal.url }}">
+                    <div class="carousel-caption">
+                    <h3>{{ carro.modelo }}</h3>
+                    <p>{{ carro.anio }}</p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img class="img-fluid" data-src="..." alt="Second slide" src="{{ carro.imagen_frontal.url }}" >
+                    <div class="carousel-caption">
+                    <h3>{{ carro.modelo }}</h3>
+                    <p>{{ carro.anio }}</p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img class="img-fluid" data-src="..." alt="Third slide" src="{{ carro.imagen_lateral_izq.url }}">
+                    <div class="carousel-caption">
+                    <h3>{{ carro.modelo }}</h3>
+                    <p>{{ carro.anio }}</p>
+                  </div>
+                </div>
+              </div>
+              <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="icon-prev" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="icon-next" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div><!-- Fin carrusel -->
+            <hr>
+            <div class="row">
+                <button type="button" class="btn btn-primary btn-lg btn-block boton-sacar-valor-id" data-toggle="modal" data-target="#exampleModal" value="{{ carro.id }}" >Rentar</button>
+            </div>
+            <hr>
+          <div class="row marketing">
+            <div class="col-lg-6">
+              <h4>Especificaciones</h4>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <span class="label label-success label-pill pull-xs-right"> {{ carro.personas }}</span>
+                    Capacidad de Personas:
+                  </li>
+                  <li class="list-group-item">
+                    <span class="label label-success label-pill pull-xs-right">{{ carro.categoria }}</span>
+                    Categoria:
+                  </li>
+                    <li class="list-group-item">
+                     <span class="label label-success label-pill pull-xs-right">{% if carro.verificacion  == True %} Si {% else %} No{% endif %}</span>
+                    Verificacion:
+                  </li>
+                    <li class="list-group-item">
+                        <span class="label label-success label-pill pull-xs-right">{{ carro.anio.year }} </span>
+                    Año:
+                  </li>
+                </ul>
+              <h4>Precios</h4>
+               <ul class="list-group">
+                  <li class="list-group-item">
+                    <span class="label label-primary label-pill pull-xs-right"> ${{ carro.precio_por_dia }}</span>
+                    Por dia:
+                  </li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+              <h4>Equipamiento</h4>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <span class="label  label-warning label-pill pull-xs-right {{ carro.equipamiento.cilindros }}">{{ carro.equipamiento.cilindros }}</span>
+                    Cilindros:
+                  </li>
+                  <li class="list-group-item">
+                    <span class="label  label-warning label-pill pull-xs-right">{% if carro.equipamiento.aire_acondicionado   == True %} Si {% else %} No {% endif %} </span>
+                    Aire Acondicionado:
+                  </li>
+                  <li class="list-group-item">
+                    <span class="label  label-warning label-pill pull-xs-right">{% if carro.equipamiento.electrico   == True %} Si {% else %} No {% endif %}  </span>
+                    Electrico:
+                  </li>
+                    <li class="list-group-item">
+                    <span class="label  label-warning label-pill pull-xs-right">{% if carro.equipamiento.transmicion  == True %} Si {% else %} No {% endif %}  </span>
+                    Transmición:
+                  </li>
+                    <li class="list-group-item">
+                    <span class="label  label-warning label-pill pull-xs-right">{% if  carro.equipamiento.quemacocos == True %}Si {% else%} No {% endif %}</span>
+                    Quemacocos:
+                  </li>
+                    <li class="list-group-item">
+                    <span class="label  label-warning label-pill pull-xs-right">{% if carro.equipamiento.asientos_de_piel == True %}Si {% else %} No {% endif %}
+
+                    </span>
+                    Asientos de piel:
+                  </li>
+                    <li class="list-group-item">
+                    <span class="label  label-warning label-pill pull-xs-right"> {% if carro.equipamiento.gps == True %}
+                                                                                   Si
+                                                                                {% else %}
+                                                                                   No
+                                                                                {% endif %}  </span>
+                    GPS:
+                  </li>
+                    <li class="list-group-item">
+                    <span class="label label-warning  label-pill pull-xs-right">{{ carro.equipamiento.color }}</span>
+                    Color:
+                  </li>
+                     <li class="list-group-item">
+                    <span class="label label-warning label-pill pull-xs-right"> {%  if carro.equipamiento.direccion == "Asis" %}Asistida {% else %} Hidraulica {% endif %}</span>
+                    Dirección:
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+    <hr/>
+    <br/>
+    <hr/>
+    <br/>
+{% endblock %}
+{% block jscontent %}
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/start/jquery-ui.css">
+        <script type="text/javascript">
+        $(document).ready(function(){
+            var $theButtons = $(".boton-sacar-valor-id");
+            var $theinput = $("#id_carro");
+            $theButtons.click(function(){
+               $theinput.val(this.value);
+            });
+        });
+    </script>
+
+    <script>
+     $.datepicker.regional['es'] = {
+         closeText: 'Cerrar',
+         prevText: '<Ant',
+         nextText: 'Sig>',
+         currentText: 'Hoy',
+         monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+         monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+         dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+         dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+         dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+         weekHeader: 'Sm',
+         dateFormat: 'dd/mm/yy',
+         firstDay: 1,
+         isRTL: false,
+         showMonthAfterYear: false,
+         yearSuffix: ''
+     };
+     $.datepicker.setDefaults($.datepicker.regional['es']);
+    $(function () {
+        $('#datepicker1').datepicker({ minDate: 0 });
+        $('#datepicker2').datepicker({ minDate: 0 });
+    });
+    </script>
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<div class="conatiner">
+    <div class="col-md-9">
+        <div class="jumbotron">
+            <h1>Termina la renta accediendo tu metodo de pago!</h1>
+            <p class="lead">Tu carro:  <strong>{{ reserva.carro }}.</strong>
+            <br/>Fecha de inicio de la renta: <strong>{{ reserva.fecha_inicio }}</strong> .
+            <br/>Fecha de finalizacion de la renta: <strong>{{ reserva.fecha_termino }} </strong></p>
+        </div>
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-5">
+                <div class="list-group">
+                  <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">Dias rentado.</h4>
+                    <h5 class="list-group-item-text"> <strong>{{ dayst }}</strong></h5>
+                  </a>
+                  <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">Precio por dia.</h4>
+                    <h5 class="list-group-item-text"> $ {{ rcarrop_day }}.</h5>
+                  </a>
+                  <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">Total</h4>
+                    <h5 class="list-group-item-text"> $ {{ total }}.</h5>
+                  </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table" >
+                    <div class="row display-tr" >
+                        <h3 class="panel-title display-td" >Detalles de Pago.</h3>
+                        <div class="display-td" >
+                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form role="form" id="payment-form" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">NUMERO DE TARJETA</label>
+                                    <div class="input-group">
+                                        {{ formTarjeta.num_tarjeta }}
+                                        {{ formTarjeta.num_tarjeta.errors }}
+{#                                        <input#}
+{#                                            type="tel"#}
+{#                                            class="form-control"#}
+{#                                            name="cardNumber"#}
+{#                                            placeholder="Tarjeta de credito valida."#}
+{#                                            autocomplete="cc-number"#}
+{#                                            required autofocus#}
+{#                                        />#}
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="cardExpiry"><span class="hidden-xs">FECHA</span><span class="visible-xs-inline">  DE</span> EXPIRACION</label>
+                                    {{ formTarjeta.codigo_cvc }}
+                                    {{ formTarjeta.codigo_cvc.errors }}
+{#                                    <input#}
+{#                                        type="tel"#}
+{#                                        class="form-control"#}
+{#                                        name="cardExpiry"#}
+{#                                        placeholder="MM / YY"#}
+{#                                        autocomplete="cc-exp"#}
+{#                                        required#}
+{#                                    />#}
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cardCVC">CODIGO CV</label>
+                                    {{ formTarjeta.fecha_expiracion }}
+                                    {{ formTarjeta.fecha_expiracion.errors }}
+{#                                    <input#}
+{#                                        type="tel"#}
+{#                                        class="form-control"#}
+{#                                        name="cardCVC"#}
+{#                                        placeholder="CVC"#}
+{#                                        autocomplete="cc-csc"#}
+{#                                        required#}
+{#                                    />#}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="">Acepto politicas terminos y condiciones.</label>
+                                {{ formTarjeta.terminos_condiciones }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="subscribe btn btn-success btn-lg btn-block" type="submit">PAGAR</button>
+                            </div>
+                        </div>
+                        <div class="row" style="display:none;">
+                            <div class="col-xs-12">
+                                <p class="payment-errors"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block jscontent %}
+<SCRIPT language=JavaScript>
+<!--
+
+//Accept terms & conditions script (by InsightEye www.insighteye.com)
+//Visit JavaScript Kit (http://javascriptkit.com) for this script & more.
+
+function checkCheckBox(f){
+if (f.agree.checked == false )
+{
+alert('Please check the box to continue.');
+return false;
+}else
+return true;
+}
+//-->
+</SCRIPT>
+{% endblock %}

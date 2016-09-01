@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block contenido %}
+
+<div class="container">
+      <div class="jumbotron bg-info">
+        <h1 class="display-3">Preguntas Frecuentes (FAQ)</h1>
+        <p class="lead">
+           Hemos creado una lista de preguntas y respuestas frecuentes; el objetivo de esta sección es proporcionarte respuestas cortas y al punto; Respuestas que puedan ayudarte a comprender más fácilmente nuestras políticas y procedimientos.
+        </p>
+      </div>
+      <div class="row marketing">
+        <div id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  ¿Por qué si hago mi Reservación con anticipación no me entregan el modelo y marca de auto de mi preferencia?
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                Cuando realizas una reservación, lo que seleccionas es un grupo de auto y no un modelo específico, para nosotros, los autos son catalogados de acuerdo a sus características en grupos.
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                 Por cuestiones de seguridad, el titular de la renta debe ser el titular también de la tarjeta de crédito con la que se realice el pre-pago.
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <ul>
+                    <li>
+                        Por tu seguridad no aceptamos dinero en efectivo en ningún tipo de moneda, como método de pago únicamente aceptamos tarjetas de crédito.
+                        <hr/>
+                    </li>
+                    <li>
+                        Impuestos: (IVA):
+                        <br/>
+                        Todos los cargos relacionados con la renta del vehículo están sujetos al impuesto sobre el valor agregado (IVA) vigente en la ciudad seleccionada.
+                        <hr/>
+                    </li>
+                    <li>
+                        Cargo por Gasolina:
+                        <br/>
+                        La gasolina no está incluida en la tarifa, a menos que lo especifique el paquete o promoción. Los vehículos deben devolverse con el tanque lleno de gasolina de lo contrario aplica el cargo por rellenar el tanque en la estación de renta adicional al costo de la gasolina faltante. Te recomendamos usar el servicio de Gasolina Pre-pagada para ahorrar tiempo y dinero.
+                        <hr/>
+                    </li>
+                </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  ¿Qué tarjetas de crédito son aceptadas en "El Chelo" para rentar un auto?
+                </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                Por cuestiones de seguridad no se acepta ningun tipo de tarjeta de credito solo cuentas de Paypal.
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                  ¿Como obtengo una cuenta de paypal?
+                </a>
+              </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                Crear una cuenta en payla es totalmente gratis dirigete a esta <a href="https://www.paypal.com/mx/webapps/mpp/what-is-paypal?adgroup=PayPal+Consumer&campaign=PayPal_JOINT_Brand&kw=paypal+crear+cuenta&gclid=Cj0KEQjwj7q6BRDcxfG4pNTQ2NoBEiQAzUpuW0bySjoRoarXLF_zACI4hnWj4AYNeSEgo9Ki5QcAy28aApnT8P8HAQ&mpch=ads&rftp=7&srce=cnvr&ercc=27724-218523-2056-2&spid=271202953119839156" >pagina</a>   para crearla
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block contenido %}
+    <div class="container">
+      <div class="jumbotron bg-danger">
+        <h1 class="display-3">Términos, políticas y condiciones</h1>
+        <p class="lead">
+            Siempre nos hemos caracterizado por ser un negocio comprometido con sus clientes, nuestra forma de operar se basa en un conjunto de Políticas y Procedimientos claros y transparentes de cara hacia ti.
+
+Si tuvieras alguna pregunta o comentario, comunícate al 01 (800) 0000000 o por correo electrónico a chelo@gmail.com donde un especialista de Servicio a Clientes te atenderá.
+        </p>
+
+      </div>
+
+      <div class="row marketing">
+        <div id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Requisitos para rentar un auto.
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <ul>
+                    <li>Edad mínima de 21 años para rentar un Vehículo.
+                        <br/>
+ Aplica cargo por conductor joven entre 21 y 24 años de edad. Todos los grupos de auto: $130 MXP por día.  así como al IVA correspondiente.
+                        <hr/>
+                    </li>
+                    <li>
+                        Licencia de conducir vigente. <br/>
+ El cliente principal y cualquier conductor adicional deben presentar una licencia de conducir vigente. Nos reservamos el derecho de verificar la licencia de conducir según las normas establecidas  y negar el alquiler en caso de incumplimiento de alguna de ellas.
+                        <hr/>
+                    </li>
+                    <li>
+                        Identificación vigente con fotografía: Credencial del IFE/INE (para ciudadanos Mexicanos) o Pasaporte.
+                    </li>
+                    <li>
+                        Para iniciar su renta es indispensable presentar una tarjeta de crédito a nombre del titular de la renta, sin embargo como pago final se puede realizar el cargo a su cuenta de Paypal.
+                    </li>
+                    <li>
+                        Se reserva el derecho de rentar un vehículo si cualquiera de nuestros requisitos de renta no se cumplen o si nuestro personal en las oficinas de renta no lo considera prudente, buscando no solamente el beneficio de la compañía sino en ocasiones la protección misma del cliente
+                    </li>
+                </ul>
+
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Nuestras Políticas de Renta
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <ul>
+                    <li>
+                        Por tu seguridad no aceptamos dinero en efectivo en ningún tipo de moneda, como método de pago únicamente con paypal.
+                        <hr/>
+                    </li>
+                    <li>
+                        Impuestos: (IVA):
+                        <br/>
+                        Todos los cargos relacionados con la renta del vehículo están sujetos al impuesto sobre el valor agregado (IVA) vigente en la ciudad seleccionada.
+                        <hr/>
+                    </li>
+                    <li>
+                        Cargo por Gasolina:
+                        <br/>
+                        La gasolina no está incluida en la tarifa. Los vehículos deben devolverse con el tanque lleno de gasolina de lo contrario aplica el cargo por rellenar el tanque en la estación de renta adicional al costo de la gasolina faltante.
+                        <hr/>
+                    </li>
+                </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Sobre nuestras Tarifas
+                </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <ul>
+                    <li>Fracciones de día que excedan 3 horas son también considerados como un día de renta.</li>
+                    <hr/>
+                    <li>
+                        La tarifa de renta no incluye el pago de multas, infracciones, arrastre de grúas, gasolina, ni cualquier otro imputable al cliente.
+                    </li>
+                </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                  Políticas sobre nuestras Reservaciones
+                </a>
+              </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <ul>
+                    <li>Cualquier cambio o cancelación a su reservación podrá realizarla/solicitarla a través del mismo medio donde fue creada, con mínimo 6 horas de anticipación al horario reservado.</li>
+                    <hr/>
+                    <li>
+                        En caso de no cancelar su reservación o hacerlo con un tiempo menor a 6 horas, se cobrará a la tarjeta de crédito utilizada el equivalente a un día de renta de la tarifa confirmada, más IVA.
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

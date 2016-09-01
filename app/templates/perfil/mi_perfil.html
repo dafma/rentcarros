@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block contenido %}
+    <div class="col-md-9">
+        <hr/>
+        <h5>Hola {{ request.user.username }}</h5>
+
+        <table class="table table-bordered">
+          <thead class="thead-inverse">
+          <td>Folio</td>
+            <td>Carro</td>
+            <td>Inicio renta</td>
+            <td>Fecha de termino</td>
+            <td>Importe</td>
+          </thead>
+          <tbody>
+            {% for foo in mi_reservacion %}
+                <tr>
+                    <td>{{ foo.id }}</td>
+                    <td>{{ foo.carro }}</td>
+                    <td>{{ foo.fecha_inicio }}</td>
+                    <td>{{ foo.fecha_termino }}</td>
+                    <td></td>
+                </tr>
+            {% endfor %}
+
+
+          </tbody>
+        </table>
+    </div>
+
+{% endblock %}

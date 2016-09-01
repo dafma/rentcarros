@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Loguearse{% endblock %}
+
+{% block contenido %}
+    <h1>Ingresar</h1>
+    {% if form.errors %}
+        <p>Tu password o nombre de usuario son incorrectos. porfavor intenta de nuevo.</p>
+    {% else %}
+        <p>Por favor , utilice el siguiente formulario para acceder al sistema .
+            Si usted no tiene una cuenta <a href="{% url "account:register" %}">registrate aqui.</a></p>
+    {% endif %}
+    <div class="col-md-3"></div>
+    <div class="col-md-4">
+        <form action="{% url "account:login" %}" method="post">
+            <div class="form-group">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}" />
+                <p><input type="submit" class="btn btn-danger" value="Entrar"></p>
+            </div>
+
+        </form>
+        <p><a href="{% url "account:password_reset" %}">Olvidaste tu Password?</a></p>
+    </div>
+    <div class="col-md-2"></div>
+    
+    <div class="social">
+        <ul>
+{#            <li class="facebook"><a href="{% url "social:begin" "facebook" %}">Login with Facebook</a></li>#}
+{#            <li class="twitter"><a href="{% url "social:begin" "twitter" %}">Login with Twitter</a></li>#}
+{#            <li class="google"><a href="{% url "social:begin" "google-oauth2" %}">Login with Google</a></li>#}
+        </ul>
+    </div>
+{% endblock %}

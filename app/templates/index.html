@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block formulario %}
+    <form method="post" >
+        {% csrf_token %}
+        {{ form }}
+        <hr/>
+        <button type="submit" class="btn btn-primary-outline">Consultar</button>
+    </form>
+{% endblock %}
+{% block contenido %}
+    <hr/>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="">
+            {% for car in carros %}
+                <div class="col-md-3">
+                    <div class="card">
+                  <a href="{% url 'detalle_carro' object_id=car.id %}">
+                    <img class="card-img-top" data-src="..." class="img-fluid"  alt="Card image cap" src="{{ car.imagen_principal.url }}" style="max-width: 100%;height: auto; ">
+                  </a>
+                      <div class="card-block">
+                  <h4 class="card-title">{{ car.nombre }}</h4>
+                  <p class="card-text">
+                          <ul>
+                              <li>Modelo: {{ car.modelo }}</li>
+                              <li>Año: {{ car.anio.year }}</li>
+                              <li>Dia: {{ car.precio_por_dia }}</li>
+                              <li>
+                                  <a href="{% url 'detalle_carro' object_id=car.id %}">
+                                    <button type="button" class="btn btn-danger-outline">
+                                        Ver
+                                    </button>
+                                    </a>
+                              </li>
+                          </ul>
+                    </p>
+                </div>
+              </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+      </div>
+{% endblock %}
+{% block jscontent %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/start/jquery-ui.css">
+    <script>
+     $.datepicker.regional['es'] = {
+         closeText: 'Cerrar',
+         prevText: '<Ant',
+         nextText: 'Sig>',
+         currentText: 'Hoy',
+         monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+         monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+         dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+         dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+         dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+         weekHeader: 'Sm',
+         dateFormat: 'dd/mm/yy',
+         firstDay: 1,
+         isRTL: false,
+         showMonthAfterYear: false,
+         yearSuffix: ''
+     };
+     $.datepicker.setDefaults($.datepicker.regional['es']);
+    $(function () {
+        $('#datepicker3').datepicker({ minDate: 0 });
+    });
+    </script>
+{% endblock %}
+
