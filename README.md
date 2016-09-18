@@ -19,7 +19,7 @@ django-storages == 1.4
 ![Image](1.png)
 ---
 > detalle carro
-![Image](1.png)
+![Image](2.png)
 
 > path chelo-heroku contiene la configuración necesaria para realizar deploy en heroku
 
